@@ -1,7 +1,8 @@
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.net.URL;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,15 +19,14 @@ public class ToDoList implements ActionListener{
 
 	private JFrame frame;
 	private JPanel panel;
-	private JButton button;
 	
-	String [] todoes = new String [100];
-	int position = 0;
+	ArrayList<String> entries = new ArrayList<String>();
 
 	public ToDoList() {
 		
 		frame = new JFrame("ToDo List");
-		ImageIcon img = new ImageIcon("C:\\Users\\Lena\\Desktop\\eclipse-workspace\\SimpleToDo\\ToDoClipart.png");
+		URL picture = ToDoList.class.getResource("/ToDoClipArt.png");
+		ImageIcon img = new ImageIcon(picture);
 		frame.setIconImage(img.getImage());
 		
 		
@@ -41,7 +41,6 @@ public class ToDoList implements ActionListener{
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 
 		
 	}
 	
@@ -57,13 +56,17 @@ public class ToDoList implements ActionListener{
 		if (command.equals("Add")) {
 			addEntry();
 		}
+		if (command.equals("Save")) {
+			
+		}
+		
 	}
 	
 	private void addEntry() {
-		String entry = JOptionPane.showInputDialog("please enter value");
+		String entry = JOptionPane.showInputDialog("Enter todo...");
 		JTextField text = new JTextField(entry);
 		
-		todoes[position] = entry;
+		entries.add(entry);
 		
 		panel.add(text);
 		frame.invalidate();
