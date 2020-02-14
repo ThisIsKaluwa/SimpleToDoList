@@ -79,7 +79,7 @@ public class ToDoList {
 		futureFile += "\n";
 
 		for (String string : entries) {
-			futureFile += "-";
+			futureFile += "- ";
 			futureFile += string;
 			futureFile += "\n";
 			futureFile += "\n";
