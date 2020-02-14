@@ -19,6 +19,9 @@ public class ToDoList implements ActionListener{
 	private JFrame frame;
 	private JPanel panel;
 	private JButton button;
+	
+	String [] todoes = new String [100];
+	int position = 0;
 
 	public ToDoList() {
 		
@@ -32,6 +35,7 @@ public class ToDoList implements ActionListener{
 		frame.add(panel);
 		
 		addButton(panel, "Add");
+		addButton(panel, "Save");
 		
 		frame.setSize(400,500);
 		frame.setLocationRelativeTo(null);
@@ -59,10 +63,16 @@ public class ToDoList implements ActionListener{
 		String entry = JOptionPane.showInputDialog("please enter value");
 		JTextField text = new JTextField(entry);
 		
+		todoes[position] = entry;
+		
 		panel.add(text);
 		frame.invalidate();
 		frame.validate();
 		frame.repaint();
+	}
+	
+	private void saveToDo() {
+		
 	}
     
 }
